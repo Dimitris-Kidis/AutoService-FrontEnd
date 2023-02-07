@@ -1,0 +1,48 @@
+<!-- <button #button (click)="go()" class="btn" type="button">
+	<span class="btn__text">Submit</span>
+	<svg class="btn__progress" viewBox="0 0 48 48" width="48px" height="48px">
+		<circle class="btn__progress-track" r="20" cx="24" cy="24" fill="none" stroke="#c7cad1" stroke-width="8" />
+		<circle class="btn__progress-fill" r="20" cx="24" cy="24" fill="none" stroke="#000000" stroke-width="8" transform="rotate(-90,24,24)" stroke-dasharray="125.66 125.66" stroke-dashoffset="125.66" />
+		<polyline class="btn__progress-check" points="12,24 20,32 36,16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="34 34" stroke-dashoffset="34" />
+	</svg>
+</button> -->
+
+
+<div class="container">
+    <div class="cards" *ngIf="reviewList">
+        <div class="card" *ngFor="let master of masters">
+            <div class="left-part">
+                <img src="{{master.avatar}}" alt="" class="avatar">
+                <span class="rating">{{master.rating}}/10</span>
+            </div>
+            <div class="right-part">
+                <h1 class="name">{{master.lastName}} {{master.firstName}}</h1>
+
+                <span class="info">Возраст: <strong>{{master.age}}</strong></span>
+                <span class="info">Стаж: <strong>{{master.experience}}</strong></span>
+                <span class="info">Спектр услуг: <strong>{{master.services}}</strong></span>
+                <span class="info">Описание: <strong>{{master.description}}</strong></span>
+                <div class="reviews-button" (click)="getReviews(master.id)">Читать отзывы &rarr;</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-review" *ngIf="!reviewList">
+    <div class="back" (click)="getBack()">&larr; Назад</div>
+    <div class="reviews">
+        <div class="review-card" *ngFor="let review of reviews">
+            <div class="review-top">
+                <img src="{{review.userAvatar}}" alt="" class="mini-avatar">
+                <div class="username">{{review.userName}}</div>
+                <div class="stars"><img src="https://typostorage.blob.core.windows.net/avatars/34_Dmitrii+Romanenco2023-02-07T095732268.star.png" alt="" *ngFor="let _ of [].constructor(review.stars)" class="star" > ({{review.stars}})</div>
+                <div class="time">{{review.createdAt.split('T')[0]}}</div>
+            </div>
+            <div class="review-text">
+                {{review.comment}}
+            </div>
+        </div>
+    </div>
+</div>
+
+

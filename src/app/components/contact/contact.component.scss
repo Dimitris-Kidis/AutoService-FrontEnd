@@ -1,0 +1,66 @@
+
+
+.wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#map {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.info {
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.numbers {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.desc {
+    font-size: 14px;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.phone {
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.email {
+    text-decoration: underline;
+    font-weight: 900;
+}

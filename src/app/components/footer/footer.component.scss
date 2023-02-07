@@ -1,0 +1,21 @@
+footer {
+    
+    // padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 20px;
+    background-color: #595959;
+    text-align: center;
+}
+
+.footer-content {
+    transition: background 0.4s;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.footer-content:hover {
+    background: rgba(0, 0, 0, 0.11);
+    cursor: pointer;
+}
