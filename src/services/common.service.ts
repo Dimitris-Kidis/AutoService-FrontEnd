@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CreateMessageCommand } from 'src/commands/Messages/CreateMessageCommand';
 import { MasterListItem } from 'src/models/Masters/MasterListItem';
 import { MasterReview } from 'src/models/Masters/MasterReview';
 // import { CreateImprovementCommand } from 'src/commands/Improvements/CreateImprovementCommand';
@@ -36,6 +37,11 @@ export class CommonService {
   //   return this._httpService.get<ScheduleInfo>(`api/common/schedule/${scheduleId}`);
   // }
 
+
+  createMessage(command: CreateMessageCommand): Observable<any> {
+  return this._httpService.post<any>("api/common/message", command);
+  }
+
   getAllMasters(): Observable<MasterListItem[]> {
     return this._httpService.get<MasterListItem[]>(`api/common/all-masters`);
   }
@@ -43,4 +49,9 @@ export class CommonService {
   getAllMasterReviews(masterId: number): Observable<MasterReview[]> {
     return this._httpService.get<MasterReview[]>(`api/common/all-master-review/${masterId}`);
   }
+
+  updateConsultation(command: UpdateConsultationCommand): Observable<any> {
+    return this._httpService.put<any>("api/common/consultation", command);
+  }
+  
 }
