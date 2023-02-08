@@ -1,1 +1,140 @@
-<p>register works!</p>
+<div class="parent">
+
+  <div class="window">
+    <form #form class="registrationForm" [formGroup]="registrationForm" (ngSubmit)="login(registrationForm.value)">
+      <div>
+        <h1>Регистрация</h1>
+        <span #invalidLogin id="invalid"></span>
+
+
+        <label for="firstName">Имя</label>
+        <input placeholder="Введите имя.." type="text" formControlName="firstName" />
+        <div>
+          <small *ngIf="registrationForm.get('firstName')?.errors?.['minlength']">
+            Имя должно быть от 2 до 30 символов в длину.
+          </small>
+          <small *ngIf="registrationForm.get('firstName')?.errors?.['maxlength']">
+            Имя должно быть от 2 до 30 символов в длину.
+          </small>
+          <small *ngIf="registrationForm.get('firstName')?.errors?.['noNumbersCharsSpaces']">
+            Имя не может содержать специальные символы.
+          </small>
+        </div>
+
+        <label for="lastName">Фамилия</label>
+        <input placeholder="Введите фамилию.." type="text" formControlName="lastName" />
+        <div>
+          <small *ngIf="registrationForm.get('lastName')?.errors?.['minlength']">
+            Имя должно быть от 2 до 30 символов в длину.
+          </small>
+          <small *ngIf="registrationForm.get('lastName')?.errors?.['maxlength']">
+            Имя должно быть от 2 до 30 символов в длину.
+          </small>
+          <small *ngIf="registrationForm.get('lastName')?.errors?.['noNumbersCharsSpaces']">
+            Фамилия не может содержать специальные символы.
+          </small>
+        </div>
+
+        <label for="email">Почтовый ящик</label>
+        <input placeholder="Введите электронную почту.." type="text" formControlName="email" />
+        <div>
+          <small *ngIf="registrationForm.get('email')?.errors?.['minlength']">
+            Почтовый адрес должен быть минимум 5 символов в длину.
+          </small>
+          <small *ngIf="registrationForm.get('email')?.errors?.['maxlength']">
+            Почтовый адрес не должен превышать 30 символов.
+          </small>
+          <small *ngIf="registrationForm.get('email')?.errors?.['email']">
+            Почта не соответствует формату. Проверьте правильность написания.
+          </small>
+        </div>
+
+        <label for="phoneNumber">Номер телефона</label>
+        <input placeholder="Введите номер телефона.." type="phone" formControlName="phoneNumber" />
+        <div>
+          <small *ngIf="registrationForm.get('phoneNumber')?.errors?.['noLettersAllowed']">
+            Номер телефона не может содержать цифр.
+          </small>
+        </div>
+
+        <label for="age">Возраст</label>
+        <input type="text" matInput placeholder="Введите возраст.." formControlName="age" />
+        <div>
+          <small *ngIf="registrationForm.get('age')?.errors?.['noLettersAllowed']">
+            Возраст может быть записан только числом.
+          </small>
+          <small *ngIf="registrationForm.get('age')?.errors?.['ageRangeError']">
+            Возраст может быть больше 3 и меньше 102.
+          </small>
+        </div>
+
+        <label for="password">Пароль</label>
+        <input type="password" placeholder="Введите пароль.." formControlName="password" />
+        <div>
+          <small *ngIf="registrationForm.get('password')?.errors?.['minlength']">
+            Длина пароля должна быть не меньше 8 символов.
+          </small>
+          <small *ngIf="registrationForm.get('password')?.errors?.['maxlength']">
+            Пароль не может содержать 20 символов.
+          </small>
+          <small *ngIf="registrationForm.get('password')?.errors?.['lowercaseLetterCheck']">
+            Пароль должен содержать как минимум одну букву нижнего регистра.
+          </small>
+          <small *ngIf="registrationForm.get('password')?.errors?.['uppercaseLetterCheck']">
+            Пароль должен содержать как минимум одну букву верхнего регистра.
+          </small>
+          <small *ngIf="registrationForm.get('password')?.errors?.['digitCheck']">
+            Пароль должен содержать одну цифру.
+          </small>
+          <small *ngIf="registrationForm.get('password')?.errors?.['specialCharCheck']">
+            Пароль должен содержать хотя бы один специальный символ.
+          </small>
+        </div>
+
+        <label id="file">Загрузить аватар</label>
+        <input type="file" id="file" name="file" (change)="onChange($event)" accept="image/png, image/jpeg" title="Выбрать аватар">
+
+        <label for="gender">Вы</label>
+        <select id="gender" formControlName="role" #roleInput (click)="openMoreInputs()">
+          <option value="false">Клиент</option>
+          <option value="true" >Мастер</option>
+        </select>
+        <div>
+          <small *ngIf="registrationForm.get('role')?.errors?.['required']">
+            Роль обязательна.
+          </small>
+        </div>
+
+        <ng-container *ngIf="moreInputs">
+        <label for="experience">Кратко опишите ваш опыт</label>
+        <input placeholder="Опишите вашу историю работы.." type="text" formControlName="experience" />
+        <div>
+          <small *ngIf="registrationForm.get('experience')?.errors?.['required']">
+            Поле опыта обязательно.
+          </small>
+        </div>
+
+        <label for="services">Список предоставляемых услуг</label>
+        <input placeholder="Услуги.." type="text" formControlName="services" />
+        <div>
+          <small *ngIf="registrationForm.get('services')?.errors?.['required']">
+            Поле услуг обязательно.
+          </small>
+        </div>
+
+        <label for="description">Опишите себя в нескольих предложениях</label>
+        <input placeholder="Описание.." type="text" formControlName="description" />
+        <div>
+          <small *ngIf="registrationForm.get('description')?.errors?.['required']">
+            Поле описания обязательно.
+          </small>
+        </div>
+
+    </ng-container>
+
+
+        <button>Зарегистрироваться</button>
+      </div>
+    </form>
+  </div>
+</div>

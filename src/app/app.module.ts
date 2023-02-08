@@ -7,8 +7,16 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './components/login/login.component';
 import { MastersListComponent } from './components/masters-list/masters-list.component';
+import { RegisterComponent } from './components/register/register.component';
 import { ServicesComponent } from './components/services/services.component';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -17,14 +25,22 @@ import { ServicesComponent } from './components/services/services.component';
     FooterComponent,
     ServicesComponent,
     ContactComponent,
-    MastersListComponent
+    MastersListComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
+  exports: [
+    MatFormFieldModule,
+    MatInputModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

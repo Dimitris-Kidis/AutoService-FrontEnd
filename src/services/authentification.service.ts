@@ -60,6 +60,18 @@ export class AuthentificationService {
     return parseInt(this.parseJwt(token).id);
   }
 
+  getUserName(): string {
+    const token: any = localStorage.getItem('token');
+    // console.log(this.parseJwt(token));
+    return this.parseJwt(token).fullname;
+  }
+
+  getUserAvatar(): string {
+    const token: any = localStorage.getItem('token');
+    // console.log(this.parseJwt(token));
+    return this.parseJwt(token).avatar;
+  }
+
   // getUserdata (): Observable<User> {
   //   const token: any = localStorage.getItem('token');
   //   var id:string = this.parseJwt(token).id;

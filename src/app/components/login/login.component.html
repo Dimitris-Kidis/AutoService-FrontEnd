@@ -1,1 +1,55 @@
-<p>login works!</p>
+<div class="parent">
+
+  <div class="window">
+    <form #form class="loginForm" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+      <div>
+        <h1>Авторизация</h1>
+        <span #invalidLogin id="invalid"></span>
+
+
+
+
+        <label for="email">Почтовый ящик</label>
+        <input placeholder="Введите электронную почту.." type="text" formControlName="email" />
+        <div>
+          <small *ngIf="loginForm.get('email')?.errors?.['minlength']">
+            Почтовый адрес должен быть минимум 5 символов в длину.
+          </small>
+          <small *ngIf="loginForm.get('email')?.errors?.['maxlength']">
+            Почтовый адрес не должен превышать 30 символов.
+          </small>
+          <small *ngIf="loginForm.get('email')?.errors?.['email']">
+            Почта не соответствует формату. Проверьте правильность написания.
+          </small>
+        </div>
+
+
+
+        <label for="password">Пароль</label>
+        <input type="password" placeholder="Введите пароль.." formControlName="password" />
+        <div>
+          <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            Длина пароля должна быть не меньше 8 символов.
+          </small>
+          <small *ngIf="loginForm.get('password')?.errors?.['maxlength']">
+            Пароль не может содержать 20 символов.
+          </small>
+          <small *ngIf="loginForm.get('password')?.errors?.['lowercaseLetterCheck']">
+            Пароль должен содержать как минимум одну букву нижнего регистра.
+          </small>
+          <small *ngIf="loginForm.get('password')?.errors?.['uppercaseLetterCheck']">
+            Пароль должен содержать как минимум одну букву верхнего регистра.
+          </small>
+          <small *ngIf="loginForm.get('password')?.errors?.['digitCheck']">
+            Пароль должен содержать одну цифру.
+          </small>
+          <small *ngIf="loginForm.get('password')?.errors?.['specialCharCheck']">
+            Пароль должен содержать хотя бы один специальный символ.
+          </small>
+        </div>
+
+        <button>Вход</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,7 +1,13 @@
 <div class="container">
     <div class="top">
         <div class="sign" *ngIf="!isLoggedIn">
-            <span class="menu-item">Логин</span> / <span class="menu-item">Регистрация</span>
+            <span class="menu-item" routerLink="login">Логин</span> / <span class="menu-item" routerLink="register">Регистрация</span>
+        </div>
+        <div class="sign" *ngIf="isLoggedIn">
+            <img class="avatar" src="{{avatar}}" alt=""><span class="menu-item" routerLink="history">Здравствуйте, {{name}}!</span>
+        </div>
+        <div class="sign exit" *ngIf="isLoggedIn">
+            <span class="menu-item" routerLink="login" (click)="logout()">Выход</span>
         </div>
     </div>
     <div class="image">

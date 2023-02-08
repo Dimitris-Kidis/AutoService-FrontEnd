@@ -22,19 +22,16 @@ export interface BearerToken {
 }
 
 export interface UserForRegistrationDto {
-    isAdmin: boolean;
-    email: string;
-    firstName: string;
-    lastName: string;
-    password: string;
-    dateOfBirth: string;
-    gender: string;
-    type: number;
-    classId: number | null;
-    subjectId: number | null;
-    position: string | null;
-    description: string | null;
-    experience: string | null;
+    role: boolean,
+    email: string,
+    firstName: string,
+    lastName: string,
+    phoneNumber: string,
+    age: number,
+    password: string,
+    experience: string | null,
+    services: string | null,
+    description: string | null
 }
 
 export interface RegistrationResponseDto {
