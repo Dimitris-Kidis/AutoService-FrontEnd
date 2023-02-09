@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UpdateConsultationCommand } from 'src/commands/Consultations/UpdateConsultationCommand';
 import { CreateMessageCommand } from 'src/commands/Messages/CreateMessageCommand';
 import { UserForAuthenticationDto } from 'src/models/Auth/auth';
+import { SeenMessage } from 'src/models/Messages/SeenMessage';
 import { AuthentificationService } from 'src/services/authentification.service';
 import { CommonService } from 'src/services/common.service';
 
@@ -29,12 +31,11 @@ export class HeaderComponent implements OnInit{
       this.avatar = this._authService.getUserAvatar();
     }
 
-    var sms: CreateMessageCommand = {
-      sender: 1,
-      receiver: 2,
-      text: 'yoooo'
-    }
-    this._commonService.createMessage(sms).subscribe();
+    this._commonService.getAllSeenMessages(1,2).subscribe(
+      (messages: SeenMessage[]) => {
+        console.log(messages);
+      }
+    )
   }
 
   logout(): void {

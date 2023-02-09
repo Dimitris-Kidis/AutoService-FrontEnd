@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UpdateConsultationCommand } from 'src/commands/Consultations/UpdateConsultationCommand';
 import { CreateMessageCommand } from 'src/commands/Messages/CreateMessageCommand';
 import { MasterListItem } from 'src/models/Masters/MasterListItem';
 import { MasterReview } from 'src/models/Masters/MasterReview';
+import { SeenMessage } from 'src/models/Messages/SeenMessage';
 // import { CreateImprovementCommand } from 'src/commands/Improvements/CreateImprovementCommand';
 // import { CreateNoteCommand } from 'src/commands/Notes/CreateNoteCommand';
 // import { Note } from 'src/models/Notes/Note';
@@ -54,4 +56,11 @@ export class CommonService {
     return this._httpService.put<any>("api/common/consultation", command);
   }
   
+  getAllSeenMessages(senderId: number, receiverId: number): Observable<SeenMessage[]> {
+    return this._httpService.get<SeenMessage[]>(`api/common/all-seen-messages/${senderId}/${receiverId}`);
+  }
+
+  getAllUnseenMessages(senderId: number, receiverId: number): Observable<SeenMessage[]> {
+    return this._httpService.get<SeenMessage[]>(`api/common/all-unseen-messages/${senderId}/${receiverId}`);
+  }
 }
