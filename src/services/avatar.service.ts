@@ -15,7 +15,8 @@ export class AvatarService {
   uploadPhoto = (file: File): Observable<any>  => {
     const formData = new FormData(); 
     const token: any = localStorage.getItem('token');
-    var id: number = token.id;
+    console.log(token.id);
+    var id: number = this._authService.getUserId();
     formData.append("Files", file);
     formData.append("UserId", `${id}`);
     return this._httpService.post<any>(`api/avatars`, formData);

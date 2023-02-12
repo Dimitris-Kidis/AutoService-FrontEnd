@@ -1,5 +1,5 @@
 export class MasterHistoryRow {
-    carInto: string;
+    carInfo: string;
     services: string;
     clientName: string;
     clientAvatar: string;
@@ -7,14 +7,14 @@ export class MasterHistoryRow {
     stars: number;
 
     constructor(
-        carInto: string,
+        carInfo: string,
         services: string,
         clientName: string,
         clientAvatar: string,
         done: boolean,
         stars: number
     ) {
-        this.carInto = carInto;
+        this.carInfo = carInfo;
         this.services = services;
         this.clientName = clientName;
         this.clientAvatar = clientAvatar;

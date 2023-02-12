@@ -4,7 +4,7 @@
             <span class="menu-item" routerLink="login">Логин</span> / <span class="menu-item" routerLink="register">Регистрация</span>
         </div>
         <div class="sign" *ngIf="isLoggedIn">
-            <img class="avatar" src="{{avatar}}" alt=""><span class="menu-item" routerLink="history">Здравствуйте, {{name}}!</span>
+            <span class="menu-item" routerLink="history">Здравствуйте, {{name}}!</span>
         </div>
         <div class="sign exit" *ngIf="isLoggedIn">
             <span class="menu-item" routerLink="login" (click)="logout()">Выход</span>
@@ -14,6 +14,25 @@
         <img src="https://typostorage.blob.core.windows.net/avatars/34_Dmitrii+Romanenco2023-02-05T162516178.5f2a7106e772032f4a7ae.jpg" alt="">
     </div>
     <div class="menu">
+
+        <a href="" class="menu-item" routerLink="record" *ngIf="role == 'Client' && consultation == false">
+            Запись
+        </a>
+        <a href="" class="menu-item" routerLink="client-chat" *ngIf="role == 'Client'">
+            Чат
+        </a>
+        <a href="" class="menu-item" routerLink="client-history" *ngIf="role == 'Client'">
+            История
+        </a>
+        <a href="" class="menu-item" routerLink="master-chat" *ngIf="role == 'Master'">
+            Чат
+        </a>
+        <a href="" class="menu-item" routerLink="master-history" *ngIf="role == 'Master'">
+            История
+        </a>
+        <a href="" class="menu-item" routerLink="cabinet" *ngIf="role == 'Master'">
+            Кабинет
+        </a>
         <a href="" class="menu-item" routerLink="services">
             Услуги
         </a>

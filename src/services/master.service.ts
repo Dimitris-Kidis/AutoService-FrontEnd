@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { UpdateMasterCommand } from 'src/commands/Masters/UpdateMasterCommand';
 import { ClientsForChat } from 'src/models/Clients/ClientsForChat';
 import { MasterHistoryRow } from 'src/models/Masters/MasterHistoryRow';
+import { MasterInfoForClient } from 'src/models/Masters/MasterInfoForClient';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class MasterService {
 
   getClientsForChats(masterId: number): Observable<ClientsForChat[]> {
     return this._httpService.get<ClientsForChat[]>(`api/master/clients-for-chat/${masterId}`);
+  }
+
+  getCurrentMasterInfo(masterId: number): Observable<MasterInfoForClient> {
+    return this._httpService.get<MasterInfoForClient>(`api/master/master-info/${masterId}`);
   }
 }

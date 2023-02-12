@@ -44,40 +44,4 @@ export class MastersListComponent implements OnInit {
     this.reviewList = true;
   }
 
-
-  // @ViewChild('button') button: ElementRef;
-  // go () {
-  //   if (!this.button) return
-  //   var doneTimeout: any = null;
-	// 	var resetTimeout:any  = null;
- 
-  //         const runClass = "btn--running";
-  //         const doneClass = "btn--done";
-  //         // `.btn--running .btn__progress-fill` `stroke-dashoffset` duration in ms
-  //         const submitDuration = 2000;
-  //         const resetDuration = 1500;
-    
-  //         // fake the submission
-  //         this.button.nativeElement.disabled = true;
-  //         this.button.nativeElement.classList.add(runClass);
-    
-  //         clearTimeout(doneTimeout);
-  //         clearTimeout(resetTimeout);
-    
-  //         doneTimeout = setTimeout(() => {
-  //           this.button.nativeElement.classList.remove(runClass);
-  //           this.button.nativeElement.classList.add(doneClass);
-            
-  //           // reset the button
-  //           resetTimeout = setTimeout(() => {
-  //             this.button.nativeElement.disabled = false;
-  //             this.button.nativeElement.classList.remove(doneClass);
-  //           }, resetDuration);
-    
-  //         }, 600 + submitDuration);
-        
-      
-  //   }
-    
 }
-

@@ -15,6 +15,12 @@ import { ServicesComponent } from './components/services/services.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClientHistoryComponent } from './components/client-history/client-history.component';
+import { MasterHistoryComponent } from './components/master-history/master-history.component';
+import { CabinetComponent } from './components/cabinet/cabinet.component';
+import { RecordComponent } from './components/record/record.component';
+import { ClientChatComponent } from './components/client-chat/client-chat.component';
+import { MasterChatComponent } from './components/master-chat/master-chat.component';
 
 
 
@@ -27,7 +33,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContactComponent,
     MastersListComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ClientHistoryComponent,
+    MasterHistoryComponent,
+    CabinetComponent,
+    RecordComponent,
+    ClientChatComponent,
+    MasterChatComponent
   ],
   imports: [
     BrowserModule,

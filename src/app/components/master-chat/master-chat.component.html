@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="wrapper" *ngIf="errorFlag == false && endChatFlag == false">
+        <div class="left-part">
+            <img src="{{masterInfo?.avatar}}" alt="" class="avatar">
+            <p class="number">
+                Имя: <strong>{{masterInfo?.fullName}}</strong>
+            </p>
+            <p class="number">
+                Номер телефона: <strong>{{masterInfo?.phoneNumber}}</strong>
+            </p>
+            <p class="email">
+                Почта: <strong>{{masterInfo?.email}}</strong>
+            </p>
+            <p class="services">
+                Автомобиль: {{masterInfo?.carInfo}}
+            </p>
+        </div>
+        <div class="divider"></div>
+        <div class="right-part">
+            <div class="message-box" #messageBox>
+                <div class="msg" *ngFor="let sms of seen">
+                <div class="received" *ngIf="sms.senderId != clientId">
+                    <img class="icon" src="{{masterInfo?.avatar}}" alt="">
+                    <span class="received-text">{{sms.text}}<br><span class="time">{{sms.dateTime.split('T')[0]}}</span></span>
+                </div>
+                <div class="sent" *ngIf="sms.senderId == clientId">
+                    <span class="sent-text">{{sms.text}}<br><span class="time">{{sms.dateTime.split('T')[0]}}</span></span><img class="icon" src="{{avatar}}" alt="">
+                </div>
+            </div>
+            </div>
+            <input #textWindow type="text" class="type" placeholder="Напечатать сообщение..." (keyup.enter)="show()">
+
+
+        </div>
+    </div>
+
+    <div class="error" *ngIf="errorFlag == true">Чата пока нет. Дождитесь, пока вас найдет ваш клиент. </div>
+
+
+</div>

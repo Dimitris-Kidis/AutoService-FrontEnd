@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="wrapper" *ngIf="errorFlag == false && endChatFlag == false">
+    <div class="left-part">
+      <img src="{{masterInfo?.avatar}}" alt="" class="avatar">
+      <p class="number">
+        Номер телефона: <strong>{{masterInfo?.phoneNumber}}</strong>
+      </p>
+      <p class="email">
+        Почта: <strong>{{masterInfo?.email}}</strong>
+      </p>
+      <p class="services">
+        Услуги: {{masterInfo?.services}}
+      </p>
+    </div>
+    <div class="divider"></div>
+    <div class="right-part">
+      <div class="message-box" #messageBox>
+        <div class="msg" *ngFor="let sms of seen">
+          <div class="received" *ngIf="sms.senderId != clientId">
+            <img class="icon" src="{{masterInfo?.avatar}}" alt="">
+            <span class="received-text">{{sms.text}}<br><span class="time">{{sms.dateTime.split('T')[0]}}</span></span>
+          </div>
+          <div class="sent" *ngIf="sms.senderId == clientId">
+            <span class="sent-text">{{sms.text}}<br><span class="time">{{sms.dateTime.split('T')[0]}}</span></span><img
+              class="icon" src="{{masterInfo?.clientAvatar}}" alt="">
+          </div>
+        </div>
+      </div>
+      <input #textWindow type="text" class="type" placeholder="Напечатать сообщение..." (keyup.enter)="show()">
+      <div class="end-button" (click)="endChat()">Закончить чат</div>
+
+    </div>
+  </div>
+
+  <div class="error" *ngIf="errorFlag == true">Чата пока нет. Возможно, вам нужно записаться на прием сперва. </div>
+
+  <div class="review" *ngIf="endChatFlag == true">
+    <label for="rate">Оцените работу</label>
+    <select id="rate" #rateInput>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <label for="comment">Оставьте отзыв о работе мастера</label>
+    <input #commentInput type="text" name="" id="comment" class="type" placeholder="Оставьте несколько слов о работе..">
+
+    <div class="end-button" (click)="finish()">Завершить</div>
+  </div>
+</div>

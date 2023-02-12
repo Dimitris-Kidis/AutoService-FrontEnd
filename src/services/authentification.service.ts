@@ -40,6 +40,7 @@ export class AuthentificationService {
   isLoggedIn() {
     const token: any = localStorage.getItem('token'); // get token from local storage
     if (token) {
+      console.log(token);
       const payload = atob(token.split('.')[1]); // decode payload of token
       const parsedPayload = JSON.parse(payload); // convert payload into an Object
       return parsedPayload.exp > Date.now() / 1000; // check if token is expired
@@ -66,22 +67,11 @@ export class AuthentificationService {
     return this.parseJwt(token).fullname;
   }
 
-  getUserAvatar(): string {
-    const token: any = localStorage.getItem('token');
-    // console.log(this.parseJwt(token));
-    return this.parseJwt(token).avatar;
-  }
-
-  // getUserdata (): Observable<User> {
-  //   const token: any = localStorage.getItem('token');
-  //   var id:string = this.parseJwt(token).id;
-  //   return this._httpService.get<User>(`api/auth/user-data/${id}`);
-  // }
 
   userRole(): string {
     const token: any = localStorage.getItem('token');
     // console.log(this.parseJwt(token));
-    return this.parseJwt(token).role == false ? 'Client' : 'Master';
+    return this.parseJwt(token).role == 'False' ? 'Client' : 'Master';
   }
 
   parseJwt (token: string) {
@@ -94,17 +84,4 @@ export class AuthentificationService {
     return JSON.parse(jsonPayload);
   };
 
-  getStudentsClassId(): number{
-    const token: any = localStorage.getItem('token');
-    var classId: number = this.parseJwt(token).classId;
-    // console.log(classId);
-    return classId;
-  }
-
-  getStudentId(): number{
-    const token: any = localStorage.getItem('token');
-    var studentId: number = this.parseJwt(token).studentId;
-    // console.log(studentId);
-    return studentId;
-  }
 }

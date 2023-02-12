@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="wrapper" *ngIf="carFlag">
+        <div class="parent">
+
+            <div class="window">
+              <form #form class="recordForm" [formGroup]="recordForm" (ngSubmit)="login(recordForm.value)">
+                <div>
+                  <h1>Укажите данные о вашем авто</h1>
+                  <span #invalidLogin id="invalid"></span>
+          
+          
+                  <label for="brand">Название бренда</label>
+                  <input placeholder="Бренд" type="text" formControlName="brand" />
+                  <div>
+                    <small *ngIf="recordForm.get('brand')?.errors?.['minlength']">
+                      Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                    <small *ngIf="recordForm.get('brand')?.errors?.['maxlength']">
+                        Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                  </div>
+
+                  <label for="model">Модель</label>
+                  <input placeholder="Модель" type="text" formControlName="model" />
+                  <div>
+                    <small *ngIf="recordForm.get('model')?.errors?.['minlength']">
+                      Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                    <small *ngIf="recordForm.get('model')?.errors?.['maxlength']">
+                        Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                  </div>
+
+                  <label for="year">Год</label>
+                  <input placeholder="Год" type="text" formControlName="year" />
+                  <div>
+                    <small *ngIf="recordForm.get('year')?.errors?.['noLettersAllowed']">
+                      Год не может содержать букв.
+                    </small>
+                  </div>
+
+                  <label for="engine">Двигатель</label>
+                  <input placeholder="Двигатель" type="text" formControlName="engine" />
+                  <div>
+                    <small *ngIf="recordForm.get('engine')?.errors?.['minlength']">
+                      Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                    <small *ngIf="recordForm.get('engine')?.errors?.['maxlength']">
+                        Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                  </div>
+
+                  <label for="driveType">Привод</label>
+                  <input placeholder="Привод" type="text" formControlName="driveType" />
+                  <div>
+                    <small *ngIf="recordForm.get('driveType')?.errors?.['minlength']">
+                      Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                    <small *ngIf="recordForm.get('driveType')?.errors?.['maxlength']">
+                        Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                  </div>
+     
+                  <label for="transmission">Тип КПП</label>
+                  <input placeholder="Тип КПП" type="text" formControlName="transmission" />
+                  <div>
+                    <small *ngIf="recordForm.get('transmission')?.errors?.['minlength']">
+                      Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                    <small *ngIf="recordForm.get('transmission')?.errors?.['maxlength']">
+                        Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                  </div>
+
+                  <label for="mileage">Пробег</label>
+                  <input placeholder="Пробег" type="text" formControlName="mileage" />
+                  <div>
+                    <small *ngIf="recordForm.get('mileage')?.errors?.['minlength']">
+                      Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                    <small *ngIf="recordForm.get('mileage')?.errors?.['maxlength']">
+                        Название должно быть от 2 до 30 символов в длину.
+                    </small>
+                    <small *ngIf="recordForm.get('mileage')?.errors?.['noLettersAllowed']">
+                        Пробег не может содежрать букв.
+                    </small>
+                  </div>
+
+                  <label for="services">Кратко опишите вашу проблему</label>
+                  <input placeholder="Описание.." type="text" formControlName="services" />
+                  <div>
+                    <small *ngIf="recordForm.get('services')?.errors?.['minlength']">
+                      Название должно быть от 30 до 400 символов в длину.
+                    </small>
+                    <small *ngIf="recordForm.get('services')?.errors?.['maxlength']">
+                        Название должно быть от 30 до 400 символов в длину.
+                    </small>
+
+                  </div>
+          
+                  
+          
+            
+          
+                  <button>Далее &rarr;</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+    </div>
+
+    <div class="cards" *ngIf="!carFlag">
+        <div class="card" *ngFor="let master of masters">
+            <div class="left-part">
+                <img src="{{master.avatar}}" alt="" class="avatar">
+                <span class="rating">{{master.rating.toFixed(2)}}/10</span>
+            </div>
+            <div class="right-part">
+                <h1 class="name">{{master.lastName}} {{master.firstName}}</h1>
+
+                <span class="info">Возраст: <strong>{{master.age}}</strong></span>
+                <span class="info">Стаж: <strong>{{master.experience}}</strong></span>
+                <span class="info">Спектр услуг: <strong>{{master.services}}</strong></span>
+                <span class="info">Описание: <strong>{{master.description}}</strong></span>
+                <div class="reviews-button" (click)="choose(master.id)">Выбрать мастера</div>
+            </div>
+        </div>
+    </div>
+</div>

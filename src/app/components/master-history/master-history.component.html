@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="table first">
+    <tr>
+      <th>Машина</th>
+      <th>Услуги</th>
+      <th>Мастер</th>
+      <th>Завершено</th>
+      <th>Оценка</th>
+    </tr>
+    <tr *ngFor="let row of history">
+      <td>{{row.carInfo}}</td>
+      <td>{{row.services}}</td>
+      <td>
+        <div class="master"><img class="avatar" src="{{row.clientAvatar}}" alt=""><span>{{row.clientName}}</span></div>
+      </td>
+      <td>{{row.done == true ? 'Работа окончена' : 'Ремонтируется'}}</td>
+      <td>{{row.stars == 0 ? '-' : row.stars}}</td>
+    </tr>
+  </table>
+</div>

@@ -8,5 +8,6 @@ export interface MasterInfoForClient {
     password: string,
     experience: string,
     services: string,
-    description: string
+    description: string,
+    clientAvatar: string,
 }

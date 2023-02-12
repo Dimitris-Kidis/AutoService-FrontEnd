@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="button-container">
+    <button class="edit" *ngIf="!editFlag" (click)="edit()">Редактировать</button>
+    <button class="save" *ngIf="editFlag" (click)="save(editForm.value)">Сохранить</button>
+    <button class="cancel" *ngIf="editFlag" (click)="cancel()">Отмена</button>
+  </div>
+  <div class="wrapper" *ngIf="!editFlag">
+
+
+
+    <div class="main-info">
+      <div class="avatar">
+        <img src="{{info?.avatar}}" class="avatar" alt="">
+      </div>
+      <div class="text-info">
+        <span class="name info-line">{{info?.lastName}} {{info?.firstName}}</span>
+        <span class="phone-number info-line"><i>Phone Number: {{info?.phoneNumber}}</i></span>
+        <span class="age info-line"><i>Age: {{info?.age}}</i></span>
+      </div>
+    </div>
+
+    <label>Загрузить аватар</label>
+    <input type="file" id="file" name="file" (change)="onChange($event)" accept="image/png, image/jpeg"
+      title="Выбрать аватар" (input)="upload()">
+
+    <div class="additional-info">
+      <p class="experience"><strong>Опыт работы:</strong><br> {{info?.experience}}</p>
+      <p class="services"><strong>Услуги:</strong><br> {{info?.services}}</p>
+      <p class="description"><strong>Описание:</strong><br> {{info?.description}}</p>
+    </div>
+  </div>
+
+  <div class="wrapper-edit" *ngIf="editFlag">
+    <div class="parent">
+
+      <div class="window">
+        <form #form class="editForm" [formGroup]="editForm" (ngSubmit)="save(editForm.value)">
+          <div>
+            <h1>Редактирование профиля</h1>
+            <span #invalidLogin id="invalid"></span>
+
+
+            <label for="firstName">Имя</label>
+            <input placeholder="Введите имя.." type="text" formControlName="firstName" />
+            <div>
+              <small *ngIf="editForm.get('firstName')?.errors?.['minlength']">
+                Имя должно быть от 2 до 30 символов в длину.
+              </small>
+              <small *ngIf="editForm.get('firstName')?.errors?.['maxlength']">
+                Имя должно быть от 2 до 30 символов в длину.
+              </small>
+              <small *ngIf="editForm.get('firstName')?.errors?.['noNumbersCharsSpaces']">
+                Имя не может содержать специальные символы.
+              </small>
+            </div>
+
+            <label for="lastName">Фамилия</label>
+            <input placeholder="Введите фамилию.." type="text" formControlName="lastName" />
+            <div>
+              <small *ngIf="editForm.get('lastName')?.errors?.['minlength']">
+                Фамилия должно быть от 2 до 30 символов в длину.
+              </small>
+              <small *ngIf="editForm.get('lastName')?.errors?.['maxlength']">
+                Фамилия должно быть от 2 до 30 символов в длину.
+              </small>
+              <small *ngIf="editForm.get('lastName')?.errors?.['noNumbersCharsSpaces']">
+                Фамилия не может содержать специальные символы.
+              </small>
+            </div>
+
+            <label for="phoneNumber">Номер телефона</label>
+            <input placeholder="Введите номер телефона.." type="phone" formControlName="phoneNumber" />
+            <div>
+              <small *ngIf="editForm.get('phoneNumber')?.errors?.['noLettersAllowed']">
+                Номер телефона не может содержать цифр.
+              </small>
+            </div>
+
+            <label for="age">Возраст</label>
+            <input type="text" matInput placeholder="Введите возраст.." formControlName="age" />
+            <div>
+              <small *ngIf="editForm.get('age')?.errors?.['noLettersAllowed']">
+                Возраст может быть записан только числом.
+              </small>
+              <small *ngIf="editForm.get('age')?.errors?.['ageRangeError']">
+                Возраст может быть больше 3 и меньше 102.
+              </small>
+            </div>
+
+
+            <label for="experience">Кратко опишите ваш опыт</label>
+            <input placeholder="Опишите вашу историю работы.." type="text" formControlName="experience" />
+            <div>
+              <small *ngIf="editForm.get('experience')?.errors?.['required']">
+                Поле опыта обязательно.
+              </small>
+            </div>
+
+            <label for="services">Список предоставляемых услуг</label>
+            <input placeholder="Услуги.." type="text" formControlName="services" />
+            <div>
+              <small *ngIf="editForm.get('services')?.errors?.['required']">
+                Поле услуг обязательно.
+              </small>
+            </div>
+
+            <label for="description">Опишите себя в нескольих предложениях</label>
+            <input placeholder="Описание.." type="text" formControlName="description" />
+            <div>
+              <small *ngIf="editForm.get('description')?.errors?.['required']">
+                Поле описания обязательно.
+              </small>
+            </div>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

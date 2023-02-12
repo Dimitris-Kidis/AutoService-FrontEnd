@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { CreateConsultationCommand } from 'src/commands/Consultations/CreateConsultationCommand';
 import { CreateCarCommand } from 'src/models/Cars/CreateCarCommand';
 import { ClientHistoryRow } from 'src/models/Clients/ClientHistoryRow';
+import { IsThereConsultation } from 'src/models/Clients/IsThereConsultation';
+import { UserId } from 'src/models/Masters/UserId';
 import { MasterInfoForClient } from 'src/models/Masters/MasterInfoForClient';
 
 @Injectable({
@@ -27,5 +29,13 @@ export class ClientService {
 
   getCurrentMasterInfo(clientId: number): Observable<MasterInfoForClient> {
     return this._httpService.get<MasterInfoForClient>(`api/client/master-info/${clientId}`);
+  }
+
+  getCurrentMasterIdOrClientId(userId: number, role: boolean): Observable<UserId> {
+    return this._httpService.get<UserId>(`api/client/current-consultation/${userId}/${role}`);
+  }
+
+  getIsThereConsultation(userId: number, role: boolean): Observable<IsThereConsultation> {
+    return this._httpService.get<IsThereConsultation>(`api/client/is-there-consultation/${userId}/${role}`);
   }
 }

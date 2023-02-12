@@ -25,10 +25,10 @@
         <input placeholder="Введите фамилию.." type="text" formControlName="lastName" />
         <div>
           <small *ngIf="registrationForm.get('lastName')?.errors?.['minlength']">
-            Имя должно быть от 2 до 30 символов в длину.
+            Фамилия должно быть от 2 до 30 символов в длину.
           </small>
           <small *ngIf="registrationForm.get('lastName')?.errors?.['maxlength']">
-            Имя должно быть от 2 до 30 символов в длину.
+            Фамилия должно быть от 2 до 30 символов в длину.
           </small>
           <small *ngIf="registrationForm.get('lastName')?.errors?.['noNumbersCharsSpaces']">
             Фамилия не может содержать специальные символы.

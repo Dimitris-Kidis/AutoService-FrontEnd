@@ -105,6 +105,8 @@ export class RegisterComponent {
 
                     });
                   }
+                  await delay(500);
+
                   this._router.navigate(['/services']).then(() => {
                     window.location.reload();
                  });
