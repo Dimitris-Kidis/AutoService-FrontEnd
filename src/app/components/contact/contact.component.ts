@@ -19,7 +19,7 @@ export class ContactComponent implements OnInit {
 
   private createMap(): void {
     this.map = new ymaps.Map('map', {
-      center: [47.061962589389715,28.868018558532256],
+      center: [47.01857603775825, 28.823582999112812],
       
       zoom: 19
     }, {
@@ -30,10 +30,10 @@ export class ContactComponent implements OnInit {
     const MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
                   '<div style="color: #000; border-radius: 50px; font-weight: bold;">$[properties.iconContent]</div>'
               );
-    const placeMark = new ymaps.Placemark([47.061962589389715,28.868018558532256], {
+    const placeMark = new ymaps.Placemark([47.01857603775825, 28.823582999112812], {
       hintContent: '3 блок',
-      balloonContent: 'Технический Универстите Молдовы',
-      iconContent: 'UTM'
+      balloonContent: 'Государственный Университет Молдовы',
+      iconContent: 'USM'
   }, {
       iconLayout: 'default#imageWithContent',
       iconImageHref: 'https://typostorage.blob.core.windows.net/avatars/34_Dmitrii+Romanenco2023-02-06T074933378.red.png',
